@@ -25,5 +25,15 @@ jobs:
         pip install pytest
 
     - name: Run the test
-      run: pytest -v     
+      run: pytest -v  
+    - name: package application
+      run: |
+        mkdir build
+        cp app.py build/
+        echo "build complete"
+    - name: upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-app
+        path: build/
 
